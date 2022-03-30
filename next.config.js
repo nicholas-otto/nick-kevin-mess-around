@@ -1,6 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+// next.config.js
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+
+ const { withKeystone } = require("@keystone-6/core/next");
+ module.exports = withKeystone({
+  reactStrictMode: true,
+ });
