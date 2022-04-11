@@ -11,9 +11,9 @@ function newWebpage(name: string){
   const newPage = 'pages/'+name+'.tsx';
   const link = 'localhost:3000/'+name;
   fs.open(newFile, 'w', function (_err: any, _f: any) {
-    //console.log(newFile+" has been created");
+    console.log(newFile+" has been created");
   });
-  fs.writeFile(newPage, "import 'grapesjs/dist/css/grapes.min.css'"+os.EOL,function (_err: any, _f: any) {});
+  fs.appendFile(newPage, "import 'grapesjs/dist/css/grapes.min.css'"+os.EOL,function (_err: any, _f: any) {});
   fs.appendFile(newPage, "export { getStaticProps } from 'destack/build/server'"+os.EOL,function (_err: any, _f: any) {});
   fs.appendFile(newPage, "export { ContentProvider as default } from 'destack'"+os.EOL,function (_err: any, _f: any) {});
 }
@@ -42,7 +42,7 @@ const Page: Lists.Page = list({
   hooks: {
     afterOperation: ({ operation, item }) => {
       if (operation === 'create') {
-        //console.log('new webpage created with name ${item.slug}');
+        //console.log(item.slug+" has been created");
         newWebpage(item.slug);
         openWebpage(item.slug);
       }
